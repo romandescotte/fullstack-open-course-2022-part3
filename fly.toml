@@ -1,6 +1,6 @@
-# fly.toml file generated for 1234 on 2022-10-16T18:12:44+13:00
+# fly.toml file generated for ancient-feather-1118 on 2022-10-17T02:01:28+13:00
 
-app = "1234"
+app = "ancient-feather-1118"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
