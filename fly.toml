@@ -1,6 +1,6 @@
-# fly.toml file generated for ancient-feather-1118 on 2022-10-17T02:01:28+13:00
+# fly.toml file generated for mis-contactos on 2022-10-18T00:58:05+13:00
 
-app = "ancient-feather-1118"
+app = "mis-contactos"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
