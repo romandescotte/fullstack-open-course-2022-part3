@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
+morgan.token('body', function (req, res) { return `Body request: ${JSON.stringify(req.body)}` })
 
 app.use(morgan(function (tokens, req, res) {
   return [
@@ -15,7 +15,7 @@ app.use(morgan(function (tokens, req, res) {
     tokens.status(req, res),
     tokens.res(req, res, 'content-length'), '-',
     tokens['response-time'](req, res), 'ms',
-    tokens.body(req, res, 'Body: '), 
+    tokens.body(req, res), 
   ].join(' ')
 }))
 
@@ -67,12 +67,13 @@ app.get('/api/persons/:id', (request, response) => {
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id);
-  const person = persons.filter(person => person.id !== id);
+  persons = persons.filter(person => person.id !== id);
   
-  if(person.length !== 0) {
-    response.status(400).json(person);    
-  } 
-  // response.status(404).end();  
+  if(persons.length !== 0) {
+    response.status(204).end();    
+  } else {
+    response.status(404).end();
+  }
 })
 
 app.post('/api/persons/', (request, response) => {
